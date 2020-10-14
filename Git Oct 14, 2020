@@ -1,0 +1,18 @@
+git config --global user.name 'Dmitry Slesarev'
+git config --global user.email 'dvslesar@gmail.com'
+
+git config --global core.quotepath off
+
+git init
+
+git status
+
+git add file.txt
+
+git status
+
+git commit -m 'Incremental commit'
+
+git add .
+
+git commit -m 'Empty commit'

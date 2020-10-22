@@ -1,0 +1,32 @@
+git config --global user.name 'Dmitry'
+git config --global user.email 'dvslesar@gmail.com'
+git config --global core.autocrlf input
+
+mkdir new
+cd mkdir
+touch filename.txt
+
+git init
+git add filename.txt
+
+git status
+
+git commit -m 'Your comment about the file.'
+
+git log
+
+git log --pretty=oneline
+git log --pretty=oneline --max-count=5
+git log --pretty=oneline --since='10 minutes ago'
+git log --pretty=oneline --until='5 minutes ago'
+git log --pretty=oneline --author='Dmitry'
+
+git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.br branch
+git config --global alias.hist "log --pretty=format:'%h %ad | %s%d  [%an]' --graph --date=short"
+

@@ -1,0 +1,650 @@
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ python3
+Python 3.9.1 (default, Dec 20 2020, 15:43:43) 
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ python3
+Python 3.9.1 (default, Dec 20 2020, 15:43:43) 
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sqlite3
+>>> db = sqlite3.connect('new.sqlite')
+>>> cur = db.cursor()
+>>> cur.execute("""CREATE TABLE new VALAUES(
+... _id INT,
+... name VARCHAR(10),
+... title VARCHAR(10),
+... # There are 4 types: INT, TEXT, VARCHAR, FLOAT
+... info TEXT)
+... """)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+sqlite3.OperationalError: near "VALAUES": syntax error
+>>> cur.execute("""CREATE TABLE new VALUES(
+... _id INT,
+... name VARCHAR(10),
+... title VARCHAR(10),
+... info TEXT)
+... """)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+sqlite3.OperationalError: near "VALUES": syntax error
+>>> cur.execute("CREATE TABLE one(_id INT, name VARCHAR())")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+sqlite3.OperationalError: near ")": syntax error
+>>> cur.execute("CREATE TABLE one(_id INT, name VARCHAR(10))")
+<sqlite3.Cursor object at 0x10cb8eb90>
+>>> db.commit()
+>>> db.rollback()
+>>> cur.execute("CREATE TABLE one(_id INT, name VARCHAR(10))")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+sqlite3.OperationalError: table one already exists
+>>> db.commit()
+>>> cur.execute("INSERT INTO one VALUES(1, 'Dmitry')")
+<sqlite3.Cursor object at 0x10cb8eb90>
+>>> db.commit()
+>>> _list = ([2, 'Dmitry'], [3, 'Alex'], [4, 'Peter'])
+>>> cur.executemany("INSERT INTO one VALUES (?, ?)", (_list[0], _list[1]))
+<sqlite3.Cursor object at 0x10cb8eb90>
+>>> db.commit()
+>>> cur.execute("SELECT * FROM one")
+<sqlite3.Cursor object at 0x10cb8eb90>
+>>> result = cur.fetchall()
+>>> for _ in result:
+...     print(_)
+... 
+(1, 'Dmitry')
+(2, 'Dmitry')
+(3, 'Alex')
+>>> db.commit()
+>>> cur.executescript("""INSERT INTO one VALUES (4, "John")
+... INSERT INTO one VALUES (5, 'Esther')
+... """)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+sqlite3.OperationalError: near "INSERT": syntax error
+>>> cur.executescript("""INSERT INTO one VALUES (4, "John");
+... INSERT INTO one VALUES (5, 'Esther');
+... """)
+<sqlite3.Cursor object at 0x10cb8eb90>
+>>> db.commit()
+>>> cur.execute("SELECT * FROM one")
+<sqlite3.Cursor object at 0x10cb8eb90>
+>>> result = cur.fetchall()
+>>> result
+[(1, 'Dmitry'), (2, 'Dmitry'), (3, 'Alex'), (4, 'John'), (5, 'Esther')]
+>>> db.commit()
+>>> db.close()
+>>> exit()
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ clear screen
+
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ python3
+Python 3.9.1 (default, Dec 20 2020, 15:43:43) 
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sqlite3
+>>> db = sqlite3.connect("new.sqlite")
+>>> cur = db.cursor()
+>>> cur.execute("SELECT * FROM one")
+<sqlite3.Cursor object at 0x102cbab90>
+>>> result = cur.fetchall()
+>>> result
+[(1, 'Dmitry'), (2, 'Dmitry'), (3, 'Alex'), (4, 'John'), (5, 'Esther')]
+>>> db.close()
+>>> exit()
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ python3
+Python 3.9.1 (default, Dec 20 2020, 15:43:43) 
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ clear screen
+
+
+
+
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ ls
+Chinook_Sqlite.sqlite
+DB Browser for SQL Lite.pages
+Dec 23, 2020
+Feb 11 2021.txt
+Feb the 3rd, 2021
+Index.pages
+Index2
+Nov 11, 2020
+Nov 18, 2020
+Oct 13th, 2020
+Oct 23, 2020
+Oct 28, 2020
+Oct 6, 2020
+Python- Работа с базой данных, часть 1:2- Используем DB-API.pages
+SELECT & EXISTS - качественный manual.pages
+Sep 23, 2020
+new.sqlite
+sqlite3.txt
+sqlite3_2
+Как работает EXISTS.pages
+Руководство по SQL. SELF JOIN..pages
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ python3 import sqlit3
+/usr/local/bin/python3: can't open file '/Users/dmitrijslesarev/Documents/SQL/import': [Errno 2] No such file or directory
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ python3
+Python 3.9.1 (default, Dec 20 2020, 15:43:43) 
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sqlite3
+>>> conn = sqlite3.connect('Chinook_Sqlite.sqlite')
+>>> cur = conn.cursor()
+>>> cur.execute("SELECT Name FROM Artist ORDER BY Name LIMIT 3")
+<sqlite3.Cursor object at 0x10c1c6b90>
+>>> result = cur.fetchall()
+>>> result2 = cur.fetchall(
+... )
+>>> result
+[('1111',), ('A Aargh!',), ('A Cor Do Som',)]
+>>> result2
+[]
+>>> cur.execute("INSERT INTO Artist VALUES (Null, 'A Aagrh!')")
+<sqlite3.Cursor object at 0x10c1c6b90>
+>>> result = cur.fetchall()
+>>> result
+[]
+>>> cur.execute("SELECT Name FROM Artist ORDER BY Name LIMIT 10")
+<sqlite3.Cursor object at 0x10c1c6b90>
+>>> result = cur.fetchall()
+>>> result
+[('1111',), ('A Aagrh!',), ('A Aargh!',), ('A Cor Do Som',), ('AAA111',), ('AAAAAA',), ('AAAAAA',), ('AC/DC',), ('Aaahen',), ('Aargh1',)]
+>>> print(results)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'results' is not defined
+>>> print(result)
+[('1111',), ('A Aagrh!',), ('A Aargh!',), ('A Cor Do Som',), ('AAA111',), ('AAAAAA',), ('AAAAAA',), ('AC/DC',), ('Aaahen',), ('Aargh1',)]
+>>> print(result)
+[('1111',), ('A Aagrh!',), ('A Aargh!',), ('A Cor Do Som',), ('AAA111',), ('AAAAAA',), ('AAAAAA',), ('AC/DC',), ('Aaahen',), ('Aargh1',)]
+>>> exit()
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ clear screen
+
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ python3
+Python 3.9.1 (default, Dec 20 2020, 15:43:43) 
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sqlite3
+>>> conn = sqlite3.connect('Chinook_Ssqlite.sqlite')
+>>> conn = sqlite3.connect('Chinook_Sqlite.sqlite')
+>>> cur = conn.cursor()
+>>> cur.execute("SELECT * FROM Artist")
+<sqlite3.Cursor object at 0x10edfbb90>
+>>> result = cur.fetchall()
+>>> for _ in result:
+...     print(_)
+... 
+(1, 'AC/DC')
+(2, 'Accept')
+(3, 'Aerosmith')
+(4, 'Alanis Morissette')
+(5, 'Alice In Chains')
+(6, 'Antônio Carlos Jobim')
+(7, 'Apocalyptica')
+(8, 'Audioslave')
+(9, 'BackBeat')
+(10, 'Billy Cobham')
+(11, 'Black Label Society')
+(12, 'Black Sabbath')
+(13, 'Body Count')
+(14, 'Bruce Dickinson')
+(15, 'Buddy Guy')
+(16, 'Caetano Veloso')
+(17, 'Chico Buarque')
+(18, 'Chico Science & Nação Zumbi')
+(19, 'Cidade Negra')
+(20, 'Cláudio Zoli')
+(21, 'Various Artists')
+(22, 'Led Zeppelin')
+(23, 'Frank Zappa & Captain Beefheart')
+(24, 'Marcos Valle')
+(25, 'Milton Nascimento & Bebeto')
+(26, 'Azymuth')
+(27, 'Gilberto Gil')
+(28, 'João Gilberto')
+(29, 'Bebel Gilberto')
+(30, 'Jorge Vercilo')
+(31, 'Baby Consuelo')
+(32, 'Ney Matogrosso')
+(33, 'Luiz Melodia')
+(34, 'Nando Reis')
+(35, 'Pedro Luís & A Parede')
+(36, 'O Rappa')
+(37, 'Ed Motta')
+(38, 'Banda Black Rio')
+(39, 'Fernanda Porto')
+(40, 'Os Cariocas')
+(41, 'Elis Regina')
+(42, 'Milton Nascimento')
+(43, 'A Cor Do Som')
+(44, 'Kid Abelha')
+(45, 'Sandra De Sá')
+(46, 'Jorge Ben')
+(47, 'Hermeto Pascoal')
+(48, 'Barão Vermelho')
+(49, 'Edson, DJ Marky & DJ Patife Featuring Fernanda Porto')
+(50, 'Metallica')
+(51, 'Queen')
+(52, 'Kiss')
+(53, 'Spyro Gyra')
+(54, 'Green Day')
+(55, 'David Coverdale')
+(56, 'Gonzaguinha')
+(57, 'Os Mutantes')
+(58, 'Deep Purple')
+(59, 'Santana')
+(60, 'Santana Feat. Dave Matthews')
+(61, 'Santana Feat. Everlast')
+(62, 'Santana Feat. Rob Thomas')
+(63, 'Santana Feat. Lauryn Hill & Cee-Lo')
+(64, 'Santana Feat. The Project G&B')
+(65, 'Santana Feat. Maná')
+(66, 'Santana Feat. Eagle-Eye Cherry')
+(67, 'Santana Feat. Eric Clapton')
+(68, 'Miles Davis')
+(69, 'Gene Krupa')
+(70, 'Toquinho & Vinícius')
+(71, 'Vinícius De Moraes & Baden Powell')
+(72, 'Vinícius De Moraes')
+(73, 'Vinícius E Qurteto Em Cy')
+(74, 'Vinícius E Odette Lara')
+(75, 'Vinicius, Toquinho & Quarteto Em Cy')
+(76, 'Creedence Clearwater Revival')
+(77, 'Cássia Eller')
+(78, 'Def Leppard')
+(79, 'Dennis Chambers')
+(80, 'Djavan')
+(81, 'Eric Clapton')
+(82, 'Faith No More')
+(83, 'Falamansa')
+(84, 'Foo Fighters')
+(85, 'Frank Sinatra')
+(86, 'Funk Como Le Gusta')
+(87, 'Godsmack')
+(88, "Guns N' Roses")
+(89, 'Incognito')
+(90, 'Iron Maiden')
+(91, 'James Brown')
+(92, 'Jamiroquai')
+(93, 'JET')
+(94, 'Jimi Hendrix')
+(95, 'Joe Satriani')
+(96, 'Jota Quest')
+(97, 'João Suplicy')
+(98, 'Judas Priest')
+(99, 'Legião Urbana')
+(100, 'Lenny Kravitz')
+(101, 'Lulu Santos')
+(102, 'Marillion')
+(103, 'Marisa Monte')
+(104, 'Marvin Gaye')
+(105, 'Men At Work')
+(106, 'Motörhead')
+(107, 'Motörhead & Girlschool')
+(108, 'Mônica Marianno')
+(109, 'Mötley Crüe')
+(110, 'Nirvana')
+(111, 'O Terço')
+(112, 'Olodum')
+(113, 'Os Paralamas Do Sucesso')
+(114, 'Ozzy Osbourne')
+(115, 'Page & Plant')
+(116, 'Passengers')
+(117, "Paul D'Ianno")
+(118, 'Pearl Jam')
+(119, 'Peter Tosh')
+(120, 'Pink Floyd')
+(121, 'Planet Hemp')
+(122, 'R.E.M. Feat. Kate Pearson')
+(123, 'R.E.M. Feat. KRS-One')
+(124, 'R.E.M.')
+(125, 'Raimundos')
+(126, 'Raul Seixas')
+(127, 'Red Hot Chili Peppers')
+(128, 'Rush')
+(129, 'Simply Red')
+(130, 'Skank')
+(131, 'Smashing Pumpkins')
+(132, 'Soundgarden')
+(133, 'Stevie Ray Vaughan & Double Trouble')
+(134, 'Stone Temple Pilots')
+(135, 'System Of A Down')
+(136, 'Terry Bozzio, Tony Levin & Steve Stevens')
+(137, 'The Black Crowes')
+(138, 'The Clash')
+(139, 'The Cult')
+(140, 'The Doors')
+(141, 'The Police')
+(142, 'The Rolling Stones')
+(143, 'The Tea Party')
+(144, 'The Who')
+(145, 'Tim Maia')
+(146, 'Titãs')
+(147, 'Battlestar Galactica')
+(148, 'Heroes')
+(149, 'Lost')
+(150, 'U2')
+(151, 'UB40')
+(152, 'Van Halen')
+(153, 'Velvet Revolver')
+(154, 'Whitesnake')
+(155, 'Zeca Pagodinho')
+(156, 'The Office')
+(157, 'Dread Zeppelin')
+(158, 'Battlestar Galactica (Classic)')
+(159, 'Aquaman')
+(160, 'Christina Aguilera featuring BigElf')
+(161, "Aerosmith & Sierra Leone's Refugee Allstars")
+(162, 'Los Lonely Boys')
+(163, 'Corinne Bailey Rae')
+(164, 'Dhani Harrison & Jakob Dylan')
+(165, 'Jackson Browne')
+(166, 'Avril Lavigne')
+(167, 'Big & Rich')
+(168, "Youssou N'Dour")
+(169, 'Black Eyed Peas')
+(170, 'Jack Johnson')
+(171, 'Ben Harper')
+(172, 'Snow Patrol')
+(173, 'Matisyahu')
+(174, 'The Postal Service')
+(175, 'Jaguares')
+(176, 'The Flaming Lips')
+(177, "Jack's Mannequin & Mick Fleetwood")
+(178, 'Regina Spektor')
+(179, 'Scorpions')
+(180, 'House Of Pain')
+(181, 'Xis')
+(182, 'Nega Gizza')
+(183, 'Gustavo & Andres Veiga & Salazar')
+(184, 'Rodox')
+(185, 'Charlie Brown Jr.')
+(186, 'Pedro Luís E A Parede')
+(187, 'Los Hermanos')
+(188, 'Mundo Livre S/A')
+(189, 'Otto')
+(190, 'Instituto')
+(191, 'Nação Zumbi')
+(192, 'DJ Dolores & Orchestra Santa Massa')
+(193, 'Seu Jorge')
+(194, 'Sabotage E Instituto')
+(195, 'Stereo Maracana')
+(196, 'Cake')
+(197, 'Aisha Duo')
+(198, 'Habib Koité and Bamada')
+(199, 'Karsh Kale')
+(200, 'The Posies')
+(201, 'Luciana Souza/Romero Lubambo')
+(202, 'Aaron Goldberg')
+(203, 'Nicolaus Esterhazy Sinfonia')
+(204, 'Temple of the Dog')
+(205, 'Chris Cornell')
+(206, 'Alberto Turco & Nova Schola Gregoriana')
+(207, 'Richard Marlow & The Choir of Trinity College, Cambridge')
+(208, 'English Concert & Trevor Pinnock')
+(209, 'Anne-Sophie Mutter, Herbert Von Karajan & Wiener Philharmoniker')
+(210, 'Hilary Hahn, Jeffrey Kahane, Los Angeles Chamber Orchestra & Margaret Batjer')
+(211, 'Wilhelm Kempff')
+(212, 'Yo-Yo Ma')
+(213, 'Scholars Baroque Ensemble')
+(214, 'Academy of St. Martin in the Fields & Sir Neville Marriner')
+(215, 'Academy of St. Martin in the Fields Chamber Ensemble & Sir Neville Marriner')
+(216, 'Berliner Philharmoniker, Claudio Abbado & Sabine Meyer')
+(217, 'Royal Philharmonic Orchestra & Sir Thomas Beecham')
+(218, 'Orchestre Révolutionnaire et Romantique & John Eliot Gardiner')
+(219, 'Britten Sinfonia, Ivor Bolton & Lesley Garrett')
+(220, 'Chicago Symphony Chorus, Chicago Symphony Orchestra & Sir Georg Solti')
+(221, 'Sir Georg Solti & Wiener Philharmoniker')
+(222, 'Academy of St. Martin in the Fields, John Birch, Sir Neville Marriner & Sylvia McNair')
+(223, 'London Symphony Orchestra & Sir Charles Mackerras')
+(224, 'Barry Wordsworth & BBC Concert Orchestra')
+(225, 'Herbert Von Karajan, Mirella Freni & Wiener Philharmoniker')
+(226, 'Eugene Ormandy')
+(227, 'Luciano Pavarotti')
+(228, 'Leonard Bernstein & New York Philharmonic')
+(229, 'Boston Symphony Orchestra & Seiji Ozawa')
+(230, 'Aaron Copland & London Symphony Orchestra')
+(231, 'Ton Koopman')
+(232, 'Sergei Prokofiev & Yuri Temirkanov')
+(233, 'Chicago Symphony Orchestra & Fritz Reiner')
+(234, 'Orchestra of The Age of Enlightenment')
+(235, 'Emanuel Ax, Eugene Ormandy & Philadelphia Orchestra')
+(236, 'James Levine')
+(237, 'Berliner Philharmoniker & Hans Rosbaud')
+(238, 'Maurizio Pollini')
+(239, 'Academy of St. Martin in the Fields, Sir Neville Marriner & William Bennett')
+(240, 'Gustav Mahler')
+(241, 'Felix Schmidt, London Symphony Orchestra & Rafael Frühbeck de Burgos')
+(242, 'Edo de Waart & San Francisco Symphony')
+(243, 'Antal Doráti & London Symphony Orchestra')
+(244, 'Choir Of Westminster Abbey & Simon Preston')
+(245, 'Michael Tilson Thomas & San Francisco Symphony')
+(246, 'Chor der Wiener Staatsoper, Herbert Von Karajan & Wiener Philharmoniker')
+(247, "The King's Singers")
+(248, 'Berliner Philharmoniker & Herbert Von Karajan')
+(249, 'Sir Georg Solti, Sumi Jo & Wiener Philharmoniker')
+(250, "Christopher O'Riley")
+(251, 'Fretwork')
+(252, 'Amy Winehouse')
+(253, 'Calexico')
+(254, 'Otto Klemperer & Philharmonia Orchestra')
+(255, 'Yehudi Menuhin')
+(256, 'Philharmonia Orchestra & Sir Neville Marriner')
+(257, 'Academy of St. Martin in the Fields, Sir Neville Marriner & Thurston Dart')
+(258, 'Les Arts Florissants & William Christie')
+(259, 'The 12 Cellists of The Berlin Philharmonic')
+(260, 'Adrian Leaper & Doreen de Feis')
+(261, 'Roger Norrington, London Classical Players')
+(262, "Charles Dutoit & L'Orchestre Symphonique de Montréal")
+(263, 'Equale Brass Ensemble, John Eliot Gardiner & Munich Monteverdi Orchestra and Choir')
+(264, "Kent Nagano and Orchestre de l'Opéra de Lyon")
+(265, 'Julian Bream')
+(266, 'Martin Roscoe')
+(267, 'Göteborgs Symfoniker & Neeme Järvi')
+(268, 'Itzhak Perlman')
+(269, 'Michele Campanella')
+(270, 'Gerald Moore')
+(271, 'Mela Tenenbaum, Pro Musica Prague & Richard Kapp')
+(272, 'Emerson String Quartet')
+(273, 'C. Monteverdi, Nigel Rogers - Chiaroscuro; London Baroque; London Cornett & Sackbu')
+(274, 'Nash Ensemble')
+(275, 'Philip Glass Ensemble')
+(276, 'A Aargh!')
+(277, 'Aargh1')
+(278, 'Aargh2')
+(279, 'Aargh1')
+(280, 'Aargh2')
+(281, 'Aaahen')
+(282, 'AAAAAA')
+(283, 'AAAAAA')
+(284, 'AAA111')
+(285, '1111')
+>>> cur.execute("DELETE FROM Artist WHERE id > 277")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+sqlite3.OperationalError: no such column: id
+>>> cur.execute("DELETE FROM Artist WHERE Artistid > 277")
+<sqlite3.Cursor object at 0x10edfbb90>
+>>> cur.execute("SELECT * FROM Artist")
+<sqlite3.Cursor object at 0x10edfbb90>
+>>> out = cur.fetchall()
+>>> print(out)
+[(1, 'AC/DC'), (2, 'Accept'), (3, 'Aerosmith'), (4, 'Alanis Morissette'), (5, 'Alice In Chains'), (6, 'Antônio Carlos Jobim'), (7, 'Apocalyptica'), (8, 'Audioslave'), (9, 'BackBeat'), (10, 'Billy Cobham'), (11, 'Black Label Society'), (12, 'Black Sabbath'), (13, 'Body Count'), (14, 'Bruce Dickinson'), (15, 'Buddy Guy'), (16, 'Caetano Veloso'), (17, 'Chico Buarque'), (18, 'Chico Science & Nação Zumbi'), (19, 'Cidade Negra'), (20, 'Cláudio Zoli'), (21, 'Various Artists'), (22, 'Led Zeppelin'), (23, 'Frank Zappa & Captain Beefheart'), (24, 'Marcos Valle'), (25, 'Milton Nascimento & Bebeto'), (26, 'Azymuth'), (27, 'Gilberto Gil'), (28, 'João Gilberto'), (29, 'Bebel Gilberto'), (30, 'Jorge Vercilo'), (31, 'Baby Consuelo'), (32, 'Ney Matogrosso'), (33, 'Luiz Melodia'), (34, 'Nando Reis'), (35, 'Pedro Luís & A Parede'), (36, 'O Rappa'), (37, 'Ed Motta'), (38, 'Banda Black Rio'), (39, 'Fernanda Porto'), (40, 'Os Cariocas'), (41, 'Elis Regina'), (42, 'Milton Nascimento'), (43, 'A Cor Do Som'), (44, 'Kid Abelha'), (45, 'Sandra De Sá'), (46, 'Jorge Ben'), (47, 'Hermeto Pascoal'), (48, 'Barão Vermelho'), (49, 'Edson, DJ Marky & DJ Patife Featuring Fernanda Porto'), (50, 'Metallica'), (51, 'Queen'), (52, 'Kiss'), (53, 'Spyro Gyra'), (54, 'Green Day'), (55, 'David Coverdale'), (56, 'Gonzaguinha'), (57, 'Os Mutantes'), (58, 'Deep Purple'), (59, 'Santana'), (60, 'Santana Feat. Dave Matthews'), (61, 'Santana Feat. Everlast'), (62, 'Santana Feat. Rob Thomas'), (63, 'Santana Feat. Lauryn Hill & Cee-Lo'), (64, 'Santana Feat. The Project G&B'), (65, 'Santana Feat. Maná'), (66, 'Santana Feat. Eagle-Eye Cherry'), (67, 'Santana Feat. Eric Clapton'), (68, 'Miles Davis'), (69, 'Gene Krupa'), (70, 'Toquinho & Vinícius'), (71, 'Vinícius De Moraes & Baden Powell'), (72, 'Vinícius De Moraes'), (73, 'Vinícius E Qurteto Em Cy'), (74, 'Vinícius E Odette Lara'), (75, 'Vinicius, Toquinho & Quarteto Em Cy'), (76, 'Creedence Clearwater Revival'), (77, 'Cássia Eller'), (78, 'Def Leppard'), (79, 'Dennis Chambers'), (80, 'Djavan'), (81, 'Eric Clapton'), (82, 'Faith No More'), (83, 'Falamansa'), (84, 'Foo Fighters'), (85, 'Frank Sinatra'), (86, 'Funk Como Le Gusta'), (87, 'Godsmack'), (88, "Guns N' Roses"), (89, 'Incognito'), (90, 'Iron Maiden'), (91, 'James Brown'), (92, 'Jamiroquai'), (93, 'JET'), (94, 'Jimi Hendrix'), (95, 'Joe Satriani'), (96, 'Jota Quest'), (97, 'João Suplicy'), (98, 'Judas Priest'), (99, 'Legião Urbana'), (100, 'Lenny Kravitz'), (101, 'Lulu Santos'), (102, 'Marillion'), (103, 'Marisa Monte'), (104, 'Marvin Gaye'), (105, 'Men At Work'), (106, 'Motörhead'), (107, 'Motörhead & Girlschool'), (108, 'Mônica Marianno'), (109, 'Mötley Crüe'), (110, 'Nirvana'), (111, 'O Terço'), (112, 'Olodum'), (113, 'Os Paralamas Do Sucesso'), (114, 'Ozzy Osbourne'), (115, 'Page & Plant'), (116, 'Passengers'), (117, "Paul D'Ianno"), (118, 'Pearl Jam'), (119, 'Peter Tosh'), (120, 'Pink Floyd'), (121, 'Planet Hemp'), (122, 'R.E.M. Feat. Kate Pearson'), (123, 'R.E.M. Feat. KRS-One'), (124, 'R.E.M.'), (125, 'Raimundos'), (126, 'Raul Seixas'), (127, 'Red Hot Chili Peppers'), (128, 'Rush'), (129, 'Simply Red'), (130, 'Skank'), (131, 'Smashing Pumpkins'), (132, 'Soundgarden'), (133, 'Stevie Ray Vaughan & Double Trouble'), (134, 'Stone Temple Pilots'), (135, 'System Of A Down'), (136, 'Terry Bozzio, Tony Levin & Steve Stevens'), (137, 'The Black Crowes'), (138, 'The Clash'), (139, 'The Cult'), (140, 'The Doors'), (141, 'The Police'), (142, 'The Rolling Stones'), (143, 'The Tea Party'), (144, 'The Who'), (145, 'Tim Maia'), (146, 'Titãs'), (147, 'Battlestar Galactica'), (148, 'Heroes'), (149, 'Lost'), (150, 'U2'), (151, 'UB40'), (152, 'Van Halen'), (153, 'Velvet Revolver'), (154, 'Whitesnake'), (155, 'Zeca Pagodinho'), (156, 'The Office'), (157, 'Dread Zeppelin'), (158, 'Battlestar Galactica (Classic)'), (159, 'Aquaman'), (160, 'Christina Aguilera featuring BigElf'), (161, "Aerosmith & Sierra Leone's Refugee Allstars"), (162, 'Los Lonely Boys'), (163, 'Corinne Bailey Rae'), (164, 'Dhani Harrison & Jakob Dylan'), (165, 'Jackson Browne'), (166, 'Avril Lavigne'), (167, 'Big & Rich'), (168, "Youssou N'Dour"), (169, 'Black Eyed Peas'), (170, 'Jack Johnson'), (171, 'Ben Harper'), (172, 'Snow Patrol'), (173, 'Matisyahu'), (174, 'The Postal Service'), (175, 'Jaguares'), (176, 'The Flaming Lips'), (177, "Jack's Mannequin & Mick Fleetwood"), (178, 'Regina Spektor'), (179, 'Scorpions'), (180, 'House Of Pain'), (181, 'Xis'), (182, 'Nega Gizza'), (183, 'Gustavo & Andres Veiga & Salazar'), (184, 'Rodox'), (185, 'Charlie Brown Jr.'), (186, 'Pedro Luís E A Parede'), (187, 'Los Hermanos'), (188, 'Mundo Livre S/A'), (189, 'Otto'), (190, 'Instituto'), (191, 'Nação Zumbi'), (192, 'DJ Dolores & Orchestra Santa Massa'), (193, 'Seu Jorge'), (194, 'Sabotage E Instituto'), (195, 'Stereo Maracana'), (196, 'Cake'), (197, 'Aisha Duo'), (198, 'Habib Koité and Bamada'), (199, 'Karsh Kale'), (200, 'The Posies'), (201, 'Luciana Souza/Romero Lubambo'), (202, 'Aaron Goldberg'), (203, 'Nicolaus Esterhazy Sinfonia'), (204, 'Temple of the Dog'), (205, 'Chris Cornell'), (206, 'Alberto Turco & Nova Schola Gregoriana'), (207, 'Richard Marlow & The Choir of Trinity College, Cambridge'), (208, 'English Concert & Trevor Pinnock'), (209, 'Anne-Sophie Mutter, Herbert Von Karajan & Wiener Philharmoniker'), (210, 'Hilary Hahn, Jeffrey Kahane, Los Angeles Chamber Orchestra & Margaret Batjer'), (211, 'Wilhelm Kempff'), (212, 'Yo-Yo Ma'), (213, 'Scholars Baroque Ensemble'), (214, 'Academy of St. Martin in the Fields & Sir Neville Marriner'), (215, 'Academy of St. Martin in the Fields Chamber Ensemble & Sir Neville Marriner'), (216, 'Berliner Philharmoniker, Claudio Abbado & Sabine Meyer'), (217, 'Royal Philharmonic Orchestra & Sir Thomas Beecham'), (218, 'Orchestre Révolutionnaire et Romantique & John Eliot Gardiner'), (219, 'Britten Sinfonia, Ivor Bolton & Lesley Garrett'), (220, 'Chicago Symphony Chorus, Chicago Symphony Orchestra & Sir Georg Solti'), (221, 'Sir Georg Solti & Wiener Philharmoniker'), (222, 'Academy of St. Martin in the Fields, John Birch, Sir Neville Marriner & Sylvia McNair'), (223, 'London Symphony Orchestra & Sir Charles Mackerras'), (224, 'Barry Wordsworth & BBC Concert Orchestra'), (225, 'Herbert Von Karajan, Mirella Freni & Wiener Philharmoniker'), (226, 'Eugene Ormandy'), (227, 'Luciano Pavarotti'), (228, 'Leonard Bernstein & New York Philharmonic'), (229, 'Boston Symphony Orchestra & Seiji Ozawa'), (230, 'Aaron Copland & London Symphony Orchestra'), (231, 'Ton Koopman'), (232, 'Sergei Prokofiev & Yuri Temirkanov'), (233, 'Chicago Symphony Orchestra & Fritz Reiner'), (234, 'Orchestra of The Age of Enlightenment'), (235, 'Emanuel Ax, Eugene Ormandy & Philadelphia Orchestra'), (236, 'James Levine'), (237, 'Berliner Philharmoniker & Hans Rosbaud'), (238, 'Maurizio Pollini'), (239, 'Academy of St. Martin in the Fields, Sir Neville Marriner & William Bennett'), (240, 'Gustav Mahler'), (241, 'Felix Schmidt, London Symphony Orchestra & Rafael Frühbeck de Burgos'), (242, 'Edo de Waart & San Francisco Symphony'), (243, 'Antal Doráti & London Symphony Orchestra'), (244, 'Choir Of Westminster Abbey & Simon Preston'), (245, 'Michael Tilson Thomas & San Francisco Symphony'), (246, 'Chor der Wiener Staatsoper, Herbert Von Karajan & Wiener Philharmoniker'), (247, "The King's Singers"), (248, 'Berliner Philharmoniker & Herbert Von Karajan'), (249, 'Sir Georg Solti, Sumi Jo & Wiener Philharmoniker'), (250, "Christopher O'Riley"), (251, 'Fretwork'), (252, 'Amy Winehouse'), (253, 'Calexico'), (254, 'Otto Klemperer & Philharmonia Orchestra'), (255, 'Yehudi Menuhin'), (256, 'Philharmonia Orchestra & Sir Neville Marriner'), (257, 'Academy of St. Martin in the Fields, Sir Neville Marriner & Thurston Dart'), (258, 'Les Arts Florissants & William Christie'), (259, 'The 12 Cellists of The Berlin Philharmonic'), (260, 'Adrian Leaper & Doreen de Feis'), (261, 'Roger Norrington, London Classical Players'), (262, "Charles Dutoit & L'Orchestre Symphonique de Montréal"), (263, 'Equale Brass Ensemble, John Eliot Gardiner & Munich Monteverdi Orchestra and Choir'), (264, "Kent Nagano and Orchestre de l'Opéra de Lyon"), (265, 'Julian Bream'), (266, 'Martin Roscoe'), (267, 'Göteborgs Symfoniker & Neeme Järvi'), (268, 'Itzhak Perlman'), (269, 'Michele Campanella'), (270, 'Gerald Moore'), (271, 'Mela Tenenbaum, Pro Musica Prague & Richard Kapp'), (272, 'Emerson String Quartet'), (273, 'C. Monteverdi, Nigel Rogers - Chiaroscuro; London Baroque; London Cornett & Sackbu'), (274, 'Nash Ensemble'), (275, 'Philip Glass Ensemble'), (276, 'A Aargh!'), (277, 'Aargh1')]
+>>> cur.execute("DELETE FROM Artist WHERE ArtistID = 277")
+<sqlite3.Cursor object at 0x10edfbb90>
+>>> conn.commit()
+>>> conn.close()
+>>> cur.execute("SELECT * FROM Artist")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+sqlite3.ProgrammingError: Cannot operate on a closed database.
+>>> clear screen
+  File "<stdin>", line 1
+    clear screen
+          ^
+SyntaxError: invalid syntax
+>>> quit()
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ clear screen
+
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ import python3
+-bash: import: command not found
+MacBook-Air-Dmitrij:SQL dmitrijslesarev$ python3
+Python 3.9.1 (default, Dec 20 2020, 15:43:43) 
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sqlite3
+>>> conn = sqlite3.connect("Chinook_Sqlite.sqlite")
+>>> cur = conn.cursor()
+>>> cur.execute("INSERT INTO Artist VALUES (Null, 'A AAgrh!')")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> conn.commit()
+>>> cur.execute("SELECT Name FROM Artist ORDER BY Name LIMIT 3")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> out = cur.fetchall()
+>>> print(out)
+[('A AAgrh!',), ('A Aargh!',), ('A Cor Do Som',)]
+>>> cur.execute("SELECT * FROM Artist ORDER BY Name LIMIT 3")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> out = cur.fetchall()
+>>> print(out)
+[(277, 'A AAgrh!'), (276, 'A Aargh!'), (43, 'A Cor Do Som')]
+>>> """ cursor.execute('''
+... SELECT name
+... FROM Artist
+... ORDER BY Name LIMIT 3
+... """)
+  File "<stdin>", line 5
+    """)
+       ^
+SyntaxError: unmatched ')'
+>>> """cur.execute("""
+'cur.execute('
+>>> """cur.execute('''
+... SELECT Name
+... FROM Artist
+... LIMIT 3 ''')
+... """
+"cur.execute('''\nSELECT Name\nFROM Artist\nLIMIT 3 ''')\n"
+>>> cur.execute("""INSERT INTO Artist VALUES (Null, 'A Aarg-2');""")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> cur.execute("""INSERT INTO Artist VALUES (Null, 'A Aarg-3');""")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> # This way would be more convenient. Try.
+>>> cur.executescript("""
+... INSERT INTO Artist VALUES (Null, 'A Aarg-4');
+... INSERT INTO Artist VALUES (Null, 'A Aarg-5');
+... """)
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> conn.commit()
+>>> cur.execute("SELECT * FROM Artist ORDER BY Name LIMIT 5")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> out = cur.fetchall()
+>>> print(out)
+[(277, 'A AAgrh!'), (278, 'A Aarg-2'), (279, 'A Aarg-3'), (280, 'A Aarg-4'), (281, 'A Aarg-5')]
+>>> raw = ([Null, 'A Aarg-6'], [Null, 'A Aarg-7'])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'Null' is not defined
+>>> Null = 'Null'
+>>> raw = ([Null, 'A Aarg-6'], [Null, 'A Aarg-7'])
+>>> cur.execute("INSERT INTO Artist VALUES (?, ?)", (raw[0][0], raw[0][1]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+sqlite3.IntegrityError: datatype mismatch
+>>> raw = ([999, 'A Aarg-6'], [1000, 'A Aarg-7'])
+>>> cur.execute("INSERT INTO Artist VALUES (?, ?)", (raw[0][0], raw[0][1]))
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> cur.commit()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'sqlite3.Cursor' object has no attribute 'commit'
+>>> conn.commit()
+>>> cur.execute("SELECT * FROM Artist WHERE ArtistID > 990")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> out = cur.fetchall()
+>>> print(out)
+[(999, 'A Aarg-6')]
+>>> cur.execute("SELECT * FROM Artist WHERE ArtistID = 1000")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> out = cur.fetchall()
+>>> print(out)
+[]
+>>> cur.execute("SELECT Name FROM Artist ORDER BY Name LIMIT ?", ("3"))
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> out = cur.fetchall()
+>>> print(out)
+[('A AAgrh!',), ('A Aarg-2',), ('A Aarg-3',)]
+>>> cur.execute("SELECT Name FROM Artist ORDER BY Name LIMIT :limit", {"limit":5})
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> out = cur.fetchall()
+>>> print(out)
+[('A AAgrh!',), ('A Aarg-2',), ('A Aarg-3',), ('A Aarg-4',), ('A Aarg-5',)]
+>>> new_artists = [
+... ('A Aargh-8',),
+... ('A Aargh-9,),
+  File "<stdin>", line 3
+    ('A Aargh-9,),
+                  ^
+SyntaxError: EOL while scanning string literal
+>>> new_artists = [
+... ('A Aargh-8',),
+... ('A Aargh-9',),
+... ('A Aargh-10',)
+... ]
+>>> cursor.executemany("INSERT INTO Artist VALUES(?, ?)", new_artists)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'cursor' is not defined
+>>> cur.executemany("INSERT INTO Artist VALUES(?, ?)", new_artists)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+sqlite3.ProgrammingError: Incorrect number of bindings supplied. The current statement uses 2, and there are 1 supplied.
+>>> cur.executemany("INSERT INTO Artist VALUES (Null, ?)", new_artists)
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> conn.commit()
+>>> cur.execute("SELECT * FROM Artist ORDER BY ArtistID DESC LIMIT 10")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> out = cur.fetchall()
+>>> print(out)
+[(1002, 'A Aargh-10'), (1001, 'A Aargh-9'), (1000, 'A Aargh-8'), (999, 'A Aarg-6'), (281, 'A Aarg-5'), (280, 'A Aarg-4'), (279, 'A Aarg-3'), (278, 'A Aarg-2'), (277, 'A AAgrh!'), (276, 'A Aargh!')]
+>>> cur.execute("SELECT Name FROM Artist ORDER BY Name LIMIT 3")
+<sqlite3.Cursor object at 0x1092c2b90>
+>>> print(cur.fechone())
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'sqlite3.Cursor' object has no attribute 'fechone'
+>>> print(cur.fetchone())
+('A AAgrh!',)
+>>> print(cur.fetchone())
+('A Aarg-2',)
+>>> print(cur.fetchone())
+('A Aarg-3',)
+>>> print(cur.fetchone())
+None
+>>> print(cur.fetchone())
+None
+>>> for row in cur.execute("SELECT Name FROM Artist ORDER BY Name LIMIT 3"):
+...     print(row)
+... 
+('A AAgrh!',)
+('A Aarg-2',)
+('A Aarg-3',)
+>>> try:
+...     
+KeyboardInterrupt
+>>> """
+... try:
+...     cur.execute(sql_statement)
+...     result = cursor.fetchall()
+... except sqlite3.DatabaseError as err:
+...     print("Error:", err)
+... else:
+...     conn.commit()
+... """
+'\ntry:\n\tcur.execute(sql_statement)\n\tresult = cursor.fetchall()\nexcept sqlite3.DatabaseError as err:\n\tprint("Error:", err)\nelse:\n\tconn.commit()\n'
+>>> 

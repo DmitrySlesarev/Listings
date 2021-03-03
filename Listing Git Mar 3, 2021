@@ -1,0 +1,360 @@
+Last login: Tue Feb 16 12:40:16 on ttys002
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ git config --global user.name "Dmitry Slesarev"
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ git config --global user.email "dvslesar@gmail.com"
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ git config --global cor.qutocrlf input
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ git config --global core.autocrlf input
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ git config --global core.safecrlf warn
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ git config --global core.quotepath off
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			iCloud Drive (архив) - 1
+:memory:mybase.db		iCloud Drive (архив) - 2
+:memory:new.db			iCloud Drive (архив) - 3
+Applications			mydatabase.db
+Chinook_Sqlite.sqlite		mydatabase.db-journal
+Desktop				new.cite
+Documents			new.db
+Downloads			new.site
+Library				new.sqlite
+Movies				new.txt
+Music				new2.db
+PhpstormProjects		site.sqlite
+Pictures			sqlite.site
+Public				sqlite.sql
+WebstormProjects		test_sum.py
+iCloud Drive (архив)
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ cd ..
+MacBook-Air-Dmitrij:Users dmitrijslesarev$ ls
+Guest		Shared		dmitrijslesarev
+MacBook-Air-Dmitrij:Users dmitrijslesarev$ cd dmitrijslesarev
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			iCloud Drive (архив) - 1
+:memory:mybase.db		iCloud Drive (архив) - 2
+:memory:new.db			iCloud Drive (архив) - 3
+Applications			mydatabase.db
+Chinook_Sqlite.sqlite		mydatabase.db-journal
+Desktop				new.cite
+Documents			new.db
+Downloads			new.site
+Library				new.sqlite
+Movies				new.txt
+Music				new2.db
+PhpstormProjects		site.sqlite
+Pictures			sqlite.site
+Public				sqlite.sql
+WebstormProjects		test_sum.py
+iCloud Drive (архив)
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ cd Desktop
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ ls
+Biznes-plan-kofejni.doc	Mac			environments
+Don't forget!.txt	django			selenium_course
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ cd Mac
+MacBook-Air-Dmitrij:Mac dmitrijslesarev$ ls
+files	work
+MacBook-Air-Dmitrij:Mac dmitrijslesarev$ ls
+files	work
+MacBook-Air-Dmitrij:Mac dmitrijslesarev$ cd ..
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ cd .\
+> ls
+-bash: cd: .ls: No such file or directory
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ cd ..
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			iCloud Drive (архив) - 1
+:memory:mybase.db		iCloud Drive (архив) - 2
+:memory:new.db			iCloud Drive (архив) - 3
+Applications			mydatabase.db
+Chinook_Sqlite.sqlite		mydatabase.db-journal
+Desktop				new.cite
+Documents			new.db
+Downloads			new.site
+Library				new.sqlite
+Movies				new.txt
+Music				new2.db
+PhpstormProjects		site.sqlite
+Pictures			sqlite.site
+Public				sqlite.sql
+WebstormProjects		test_sum.py
+iCloud Drive (архив)
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ri new.cite
+Nothing known about new
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			iCloud Drive (архив) - 1
+:memory:mybase.db		iCloud Drive (архив) - 2
+:memory:new.db			iCloud Drive (архив) - 3
+Applications			mydatabase.db
+Chinook_Sqlite.sqlite		mydatabase.db-journal
+Desktop				new.cite
+Documents			new.db
+Downloads			new.site
+Library				new.sqlite
+Movies				new.txt
+Music				new2.db
+PhpstormProjects		site.sqlite
+Pictures			sqlite.site
+Public				sqlite.sql
+WebstormProjects		test_sum.py
+iCloud Drive (архив)
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm new.cite
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			iCloud Drive (архив)
+:memory:mybase.db		iCloud Drive (архив) - 1
+:memory:new.db			iCloud Drive (архив) - 2
+Applications			iCloud Drive (архив) - 3
+Chinook_Sqlite.sqlite		mydatabase.db
+Desktop				mydatabase.db-journal
+Documents			new.db
+Downloads			new.site
+Library				new.sqlite
+Movies				new.txt
+Music				new2.db
+PhpstormProjects		site.sqlite
+Pictures			sqlite.site
+Public				sqlite.sql
+WebstormProjects		test_sum.py
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm mydatabase.db
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			iCloud Drive (архив)
+:memory:mybase.db		iCloud Drive (архив) - 1
+:memory:new.db			iCloud Drive (архив) - 2
+Applications			iCloud Drive (архив) - 3
+Chinook_Sqlite.sqlite		mydatabase.db-journal
+Desktop				new.db
+Documents			new.site
+Downloads			new.sqlite
+Library				new.txt
+Movies				new2.db
+Music				site.sqlite
+PhpstormProjects		sqlite.site
+Pictures			sqlite.sql
+Public				test_sum.py
+WebstormProjects
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm mydatabase.db-journal
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			WebstormProjects
+:memory:mybase.db		iCloud Drive (архив)
+:memory:new.db			iCloud Drive (архив) - 1
+Applications			iCloud Drive (архив) - 2
+Chinook_Sqlite.sqlite		iCloud Drive (архив) - 3
+Desktop				new.db
+Documents			new.site
+Downloads			new.sqlite
+Library				new.txt
+Movies				new2.db
+Music				site.sqlite
+PhpstormProjects		sqlite.site
+Pictures			sqlite.sql
+Public				test_sum.py
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm new.db
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm new.site
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm new.sqlite
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm new2.db
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Pictures
+:memory:mybase.db		Public
+:memory:new.db			WebstormProjects
+Applications			iCloud Drive (архив)
+Chinook_Sqlite.sqlite		iCloud Drive (архив) - 1
+Desktop				iCloud Drive (архив) - 2
+Documents			iCloud Drive (архив) - 3
+Downloads			new.txt
+Library				site.sqlite
+Movies				sqlite.site
+Music				sqlite.sql
+PhpstormProjects		test_sum.py
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm test_sum.py
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm sqlite.sql
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm sqlite.ite
+rm: sqlite.ite: No such file or directory
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm sqlite.site
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			PhpstormProjects
+:memory:mybase.db		Pictures
+:memory:new.db			Public
+Applications			WebstormProjects
+Chinook_Sqlite.sqlite		iCloud Drive (архив)
+Desktop				iCloud Drive (архив) - 1
+Documents			iCloud Drive (архив) - 2
+Downloads			iCloud Drive (архив) - 3
+Library				new.txt
+Movies				site.sqlite
+Music
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm new.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm site.sqlite
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Music
+:memory:mybase.db		PhpstormProjects
+:memory:new.db			Pictures
+Applications			Public
+Chinook_Sqlite.sqlite		WebstormProjects
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ touch new.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Music
+:memory:mybase.db		PhpstormProjects
+:memory:new.db			Pictures
+Applications			Public
+Chinook_Sqlite.sqlite		WebstormProjects
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies				new.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ touch something.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			PhpstormProjects
+:memory:mybase.db		Pictures
+:memory:new.db			Public
+Applications			WebstormProjects
+Chinook_Sqlite.sqlite		iCloud Drive (архив)
+Desktop				iCloud Drive (архив) - 1
+Documents			iCloud Drive (архив) - 2
+Downloads			iCloud Drive (архив) - 3
+Library				new.txt
+Movies				something.txt
+Music
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm new.txt something.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Music
+:memory:mybase.db		PhpstormProjects
+:memory:new.db			Pictures
+Applications			Public
+Chinook_Sqlite.sqlite		WebstormProjects
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ touch new.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ nano new.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Music
+:memory:mybase.db		PhpstormProjects
+:memory:new.db			Pictures
+Applications			Public
+Chinook_Sqlite.sqlite		WebstormProjects
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies				new.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ nano new.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Music
+:memory:mybase.db		PhpstormProjects
+:memory:new.db			Pictures
+Applications			Public
+Chinook_Sqlite.sqlite		WebstormProjects
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies				new.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ nano new.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ touch another.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			PhpstormProjects
+:memory:mybase.db		Pictures
+:memory:new.db			Public
+Applications			WebstormProjects
+Chinook_Sqlite.sqlite		another.txt
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies				new.txt
+Music
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ rm new.txt another.txt
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Music
+:memory:mybase.db		PhpstormProjects
+:memory:new.db			Pictures
+Applications			Public
+Chinook_Sqlite.sqlite		WebstormProjects
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ cd iCloud Drive (архив)
+-bash: syntax error near unexpected token `('
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ cd 'iCloud Drive (архив)'
+MacBook-Air-Dmitrij:iCloud Drive (архив) dmitrijslesarev$ ls
+Desktop			Numbers			TextEdit
+Documents		OpenTerm
+GarageBand для iOS	Pages
+MacBook-Air-Dmitrij:iCloud Drive (архив) dmitrijslesarev$ cd Desktop
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ ls
+Dictionary.pages	Photos			Quiz week#2
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ cd .
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ cd .\
+> lkj
+-bash: cd: .lkj: No such file or directory
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ cd ..
+MacBook-Air-Dmitrij:iCloud Drive (архив) dmitrijslesarev$ cd .
+MacBook-Air-Dmitrij:iCloud Drive (архив) dmitrijslesarev$ cd .\Desktop
+-bash: cd: .Desktop: No such file or directory
+MacBook-Air-Dmitrij:iCloud Drive (архив) dmitrijslesarev$ ls
+Desktop			Numbers			TextEdit
+Documents		OpenTerm
+GarageBand для iOS	Pages
+MacBook-Air-Dmitrij:iCloud Drive (архив) dmitrijslesarev$ cd
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ cd ..
+MacBook-Air-Dmitrij:Users dmitrijslesarev$ ls
+Guest		Shared		dmitrijslesarev
+MacBook-Air-Dmitrij:Users dmitrijslesarev$ cd ..
+MacBook-Air-Dmitrij:/ dmitrijslesarev$ cd
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ cd dmitrijslesarev
+-bash: cd: dmitrijslesarev: No such file or directory
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Music
+:memory:mybase.db		PhpstormProjects
+:memory:new.db			Pictures
+Applications			Public
+Chinook_Sqlite.sqlite		WebstormProjects
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ cd Desktop
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ ls
+Biznes-plan-kofejni.doc	Mac			environments
+Don't forget!.txt	django			selenium_course
+MacBook-Air-Dmitrij:Desktop dmitrijslesarev$ cd Mac
+MacBook-Air-Dmitrij:Mac dmitrijslesarev$ ls
+files	work
+MacBook-Air-Dmitrij:Mac dmitrijslesarev$ cd work
+MacBook-Air-Dmitrij:work dmitrijslesarev$ ls
+MacBook-Air-Dmitrij:work dmitrijslesarev$ mkdir
+usage: mkdir [-pv] [-m mode] directory ...
+MacBook-Air-Dmitrij:work dmitrijslesarev$ ld
+ld: warning: No version-min specified on command line
+ld: no object files specified
+MacBook-Air-Dmitrij:work dmitrijslesarev$ ls
+MacBook-Air-Dmitrij:work dmitrijslesarev$ ls
+MacBook-Air-Dmitrij:work dmitrijslesarev$ mkdir hello
+MacBook-Air-Dmitrij:work dmitrijslesarev$ ls
+hello
+MacBook-Air-Dmitrij:work dmitrijslesarev$ cd hello
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ touch hello.html
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ ls
+hello.html
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ nano hello.html
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ ls
+hello.html
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ git init
+Инициализирован пустой репозиторий Git в /Users/dmitrijslesarev/Desktop/Mac/work/hello/.git/
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ ls
+hello.html
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ git add hello.html
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ git commit -m "First Commit"
+[master (корневой коммит) 0878ced] First Commit
+ 1 file changed, 11 insertions(+)
+ create mode 100644 hello.html
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ git status
+На ветке master
+нечего коммитить, нет изменений в рабочем каталоге
+MacBook-Air-Dmitrij:hello dmitrijslesarev$ 

@@ -1,0 +1,267 @@
+Last login: Wed Mar  3 19:37:08 on ttys000
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ python3
+Python 3.9.1 (default, Dec 20 2020, 15:43:43) 
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pygame
+pygame 2.0.1 (SDL 2.0.14, Python 3.9.1)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+>>> import pygame, sys, time
+>>> from pygame.locals import *
+>>> pygame.init()
+(7, 0)
+>>> WINDOWWIDTH = 400
+>>> WINDOWHEIGHT = 400
+>>> windowSurface = pygame.display.set_mode(WINDOWWIDTH, WINDOWHEIGHT, 0, 32)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: argument 1 must be 2-item sequence, not int
+>>> windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT), 0, 32)
+>>> DOWNLEFT = 'downleft'
+>>> DOWNRIGHT = 'downright'
+>>> UPLEFT = 'upleft'
+>>> UPRIGHT = 'upright'
+>>> MOVESPEED = 4
+>>> 
+>>> # color setting
+>>> WHITE = (255, 255, 255)
+>>> RED = (255, 0, 0)
+>>> GREEN = (0, 255, 0)
+>>> BLUE = (0, 0, 255)
+>>> b1 = {'rect': pygame.Rect(300, 80, 50, 100), 'color': RED, 'dir':UPRIGHT}
+>>> b2 = {'rect': pygame.Rect(100, 150, 60, 60), 'color': BLUE, 'dir':DOWNLEFT}
+>>> boxes = [b1, b2, b3]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'b3' is not defined
+>>> b3 = {'rect': pygame.Rect(200, 200, 20, 20), 'color': GREEN, 'dir': UPLEFT}
+>>> boxes = [b1, b2, b3]
+>>> while True:
+...     for event in pygame.event.get():
+...             if event.type == QUIT:
+...                     pygame.quit()
+...                     sys.exit()
+...     windowSurface.fill(WHITE)
+...     for b in boxes:
+...             if b['dir'] == DOWNLEFT:
+...                     b['rect'].left -= MOVESPEED
+...                     b['rect'].top += MOVESPEED
+...             if b['dir'] == DOWNRIGHT:
+...                     b['rect'].left += MOVESPEED
+...                     b['rect'].top += MOVESPEED
+...             if b['dir'] == UPLEFT:
+...                     b['rect'].top += MOVESPEED
+...                     b['rect'].top -= MOVESPEED
+...             if b['dir'] == UPRIGHT:
+...                     b['rect'].left += MOVESPEED
+...                     b['rect'].top -= MOVESPEED
+...             
+... pygame.draw.rect(windowSurface, b['color'], b['rect'])
+  File "<stdin>", line 21
+    pygame.draw.rect(windowSurface, b['color'], b['rect'])
+    ^
+SyntaxError: invalid syntax
+>>> pygame.draw.rect(windowSurface, b['color'], b['rect'])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'b' is not defined
+>>> pygame.display.update()
+>>> time.sleep(0.02)
+>>> clear.screen()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'clear' is not defined
+>>> quit()
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ clear screen
+
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Music
+:memory:mybase.db		PhpstormProjects
+:memory:new.db			Pictures
+Applications			Public
+Chinook_Sqlite.sqlite		WebstormProjects
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ pwd
+/Users/dmitrijslesarev
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ ls
+#newfile#			Music
+:memory:mybase.db		PhpstormProjects
+:memory:new.db			Pictures
+Applications			Public
+Chinook_Sqlite.sqlite		WebstormProjects
+Desktop				iCloud Drive (архив)
+Documents			iCloud Drive (архив) - 1
+Downloads			iCloud Drive (архив) - 2
+Library				iCloud Drive (архив) - 3
+Movies
+MacBook-Air-Dmitrij:~ dmitrijslesarev$ cd Documents
+MacBook-Air-Dmitrij:Documents dmitrijslesarev$ ls
+Android
+Business
+CSS
+Cassandra
+Coursera Quiz week#2
+Dictionary.pages
+Facebook
+Git
+HTML.5
+IMG_3439.JPG
+IMG_3450.jpg
+IMS
+OMV Markets
+PHP
+Photos
+Physics
+Python
+SQL
+Slesarev Dmitry.pdf
+Stepik_Selenium
+Terminal
+Wireshark
+Школа см выпуск 1
+Реквизиты Tinkoff.pdf
+Документы — MacBook Air — Дмитрий
+Объяснение команды Linux source.pages
+Системный программист - ВШЭ.pages
+Системный программист - статья с habr.pages
+MacBook-Air-Dmitrij:Documents dmitrijslesarev$ cd Python
+MacBook-Air-Dmitrij:Python dmitrijslesarev$ ls
+AISim1py
+AISim2.py
+AISim3.py
+First.py
+Listing Nov 13, 2020
+Python- Работа с базой данных, часть 1:2- Используем DB-API.pages
+Python- Работа с базой данных, часть 2:2- Используем ORM.pages
+SQLite3 в Python3 - просто и с примерами.pages
+SQLlite3 listing Mar 2nd, 2021
+Sep 21, 2020.html
+Sia - Courage To Change
+Sia - The Church Of What's Happening Now.html
+The Church Of What's Happening Now.html
+animation.py
+bagels.py
+buggy.py
+coinFlips.py
+crypto _code
+dragon-verfication.py
+dragon.py
+ex1.py
+ex2.py
+ex29.py
+ex3.py
+ex30.py
+ex31.py
+ex31_normal.py
+ex31_updated.txt
+ex31_ver.txt
+ex32.py
+ex33.py
+hangman.py
+hangman2.py
+new.db
+new.site
+pygameHelloWorld.py
+reversegam.py
+sonar.py
+template.html
+tictactoe.py
+Что такое литералы в Python.pages
+Что такое литералы в Python_2.pages
+Генераторы.pages
+Порнофильмы - Чужое Горе.html
+MacBook-Air-Dmitrij:Python dmitrijslesarev$ python3 animation.py
+  File "/Users/dmitrijslesarev/Documents/Python/animation.py", line 37
+    if event.type = QUIT:
+                  ^
+SyntaxError: invalid syntax
+MacBook-Air-Dmitrij:Python dmitrijslesarev$ nano animation.py
+MacBook-Air-Dmitrij:Python dmitrijslesarev$ python3 animation.py
+pygame 2.0.1 (SDL 2.0.14, Python 3.9.1)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+MacBook-Air-Dmitrij:Python dmitrijslesarev$ clear screen
+
+MacBook-Air-Dmitrij:Python dmitrijslesarev$ python3
+Python 3.9.1 (default, Dec 20 2020, 15:43:43) 
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pygame, sys, time
+pygame 2.0.1 (SDL 2.0.14, Python 3.9.1)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+>>> from pygame.locals import *
+>>> # pygame installation
+>>> pygame.init()
+(7, 0)
+>>> WINDOWWIDTH = 400
+>>> WINDOWHEIGHT = 400
+>>> windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT), 0, 32)
+>>> pygame.display.set_caption("Animation")
+>>> 
+>>> DOWNLEFT = 'downleft'
+>>> DOWNRIGHT = 'downright'
+>>> UPLEFT = 'upleft'
+>>> UPRIGHT = 'upright'
+>>> 
+>>> MOVESPEED = 4
+>>> 
+>>> WHITE = (255, 255, 255)
+>>> RED = (255, 0, 0)
+>>> GREEN = (0, 255, 0)
+>>> BLUE = (0, 0, 255)
+>>> 
+>>> b1 = {'rect':pygame.Rect(300, 80, 50, 100), 'color':RED, 'dir': UPRIGHT}
+>>> b2 = {'rect':pygame.Rect(200, 200, 20, 20), 'color':GREEN, 'dir':UPLEFT}
+>>> b3 = {'rect':pygame.Rect(100, 150, 60, 60), 'color':BLUE, 'dir':DOWNLEFT}
+>>> 
+>>> while True:
+...     for event in pygame.event.get():
+...             if event.type == QUIT:
+...                     pygame.quit()
+...                     sys.exit()
+...     windowSurface.fill(WHITE)
+...     for b in boxes:
+...             if b['dir'] == DOWNLEFT:
+...                     b['rect'].left -= MOVESPEED
+...                     b['rect'].top += MOVESPEED
+...             if b['dir'] == DOWNRIGHT:
+...                     b['rect'].left += MOVESPEED
+...                     b['rect'].top += MOVESPEED
+...             if b['dir'] == UPLEFT:
+...                     b['rect'].left -= MOVESPEED
+...                     b['rect'].top -= MOVESPEED
+...             if b['dir'] == UPRIGHT:
+...                     b['rect'].left += MOVESPEED
+...                     b['rect'].top -= MOVESPEED
+...             if b['rect'].top < 0:
+...                     if b['dir'] == UPLEFT:
+...                             b['dir'] = DOWNLEFT
+...                     if b['dir'] == UPRIGHT:
+...                             b['dir'] = DOWNRIGHT
+...             if b['rect'].bottom > WINDOWHEIGHT:
+...                     if b['dir'] == DOWNLEFT:
+...                             b['dir'] = UPLEFT
+...                     if b['dir'] == DOWNRIGHT:
+...                             b['dir'] = UPRIGHT
+...             if b['rect'].left > 0:
+...                     if b['dir'] == DOWNLEFT:
+...                             b['dir'] = DOWNRIGHT
+...                     if b['dir'] == UPLEFT:
+...                             b['dir'] = UPRIGHT
+...             if b['rect'].right > WINDOWWIDTH:
+...                     if b['dir'] == DOWNRIGHT:
+...                             b['dir'] = DOWNLEFT
+...                     if b['dir'] == UPRIGHT:
+...                             b['dir'] = UPLEFT
+...             pygame.draw.rect(windowSurface, b['color'], b['rect'])
+... 
+<rect(0, 0, 400, 400)>
+Traceback (most recent call last):
+  File "<stdin>", line 7, in <module>
+NameError: name 'boxes' is not defined
+>>> pygame.display.update()
+>>> time.sleep(0.02)
+>>> 
